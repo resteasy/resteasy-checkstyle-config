@@ -14,7 +14,7 @@
     <groupId>org.jboss.resteasy.checkstyle</groupId>
     <artifactId>resteasy-checkstyle-config</artifactId>
     <name>RESTEasy: Checkstyle Configuration</name>
-    <version>1.0.0.Final</version>
+    <version>1.0.1.Final-SNAPSHOT</version>
 
     <licenses>
         <license>
