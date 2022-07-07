@@ -8,13 +8,15 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>38</version>
+        <version>39</version>
+        <relativePath/>
     </parent>
 
-    <groupId>org.jboss.resteasy.checkstyle</groupId>
-    <artifactId>resteasy-checkstyle-config</artifactId>
-    <name>RESTEasy: Checkstyle Configuration</name>
-    <version>1.0.1.Final-SNAPSHOT</version>
+    <groupId>dev.resteasy.tools</groupId>
+    <artifactId>resteasy-dev-tools</artifactId>
+    <name>RESTEasy: Development Tools</name>
+    <version>2.0.0.Final-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <licenses>
         <license>
@@ -23,4 +25,9 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+    <modules>
+        <module>resteasy-checkstyle-config</module>
+        <module>ide-config</module>
+        <module>parent-pom</module>
+    </modules>
 </project>
