@@ -18,6 +18,14 @@
     <version>2.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <url>https://resteasy.dev</url>
+
+    <scm>
+        <connection>scm:git:git://github.com/resteasy/resteasy-dev-tools.git</connection>
+        <developerConnection>scm:git:git@github.com:resteasy/resteasy-dev-tools.git</developerConnection>
+        <url>https://github.com/resteasy/resteasy-dev-tools/tree/main/</url>
+    </scm>
+
     <licenses>
         <license>
             <name>Apache License 2.0</name>
@@ -25,9 +33,28 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <properties>
+        <version.release.plugin>3.0.0-M6</version.release.plugin>
+    </properties>
+
     <modules>
         <module>resteasy-checkstyle-config</module>
         <module>ide-config</module>
         <module>parent-pom</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <localRepoDirectory>${settings.localRepository}</localRepoDirectory>
+                    <pushChanges>false</pushChanges>
+                    <signTag>true</signTag>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
