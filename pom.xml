@@ -20,7 +20,9 @@
 
     <url>https://resteasy.dev</url>
 
-    <scm>
+    <scm child.scm.connection.inherit.append.path="false"
+         child.scm.developerConnection.inherit.append.path="false"
+         child.scm.url.inherit.append.path="false">
         <connection>scm:git:git://github.com/resteasy/resteasy-dev-tools.git</connection>
         <developerConnection>scm:git:git@github.com:resteasy/resteasy-dev-tools.git</developerConnection>
         <url>https://github.com/resteasy/resteasy-dev-tools/tree/main/</url>

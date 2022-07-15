@@ -15,6 +15,34 @@
     <version>2.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <url>https://resteasy.dev</url>
+
+    <scm child.scm.connection.inherit.append.path="false"
+         child.scm.developerConnection.inherit.append.path="false"
+         child.scm.url.inherit.append.path="false">
+        <connection>scm:git:git://github.com/resteasy/resteasy-dev-tools.git</connection>
+        <developerConnection>scm:git:git@github.com:resteasy/resteasy-dev-tools.git</developerConnection>
+        <url>https://github.com/resteasy/resteasy-dev-tools/tree/main/</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>James R. Perkins</name>
+            <email>jperkins@redhat.com</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>https://redhat.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://repository.jboss.org/licenses/apache-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <!-- Configuration properties -->
         <skipFormatting>false</skipFormatting>
@@ -25,6 +53,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
 
+        <version.nexus-staging-maven-plugin>1.6.13</version.nexus-staging-maven-plugin>
         <version.formatter-maven-plugin>2.17.0</version.formatter-maven-plugin>
         <version.impsort-maven-plugin>1.6.2</version.impsort-maven-plugin>
     </properties>
@@ -112,5 +141,41 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${version.nexus-staging-maven-plugin}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <serverId>ossrh</serverId>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                            <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+                            <stagingProgressTimeoutMinutes>60</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
