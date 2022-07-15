@@ -15,7 +15,7 @@
     <groupId>dev.resteasy.tools</groupId>
     <artifactId>resteasy-dev-tools</artifactId>
     <name>RESTEasy: Development Tools</name>
-    <version>2.0.0.Final-SNAPSHOT</version>
+    <version>1.0.0.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>https://resteasy.dev</url>
