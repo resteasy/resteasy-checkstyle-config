@@ -24,7 +24,17 @@
         <connection>scm:git:git://github.com/resteasy/resteasy-dev-tools.git</connection>
         <developerConnection>scm:git:git@github.com:resteasy/resteasy-dev-tools.git</developerConnection>
         <url>https://github.com/resteasy/resteasy-dev-tools/tree/main/</url>
+        <tag>HEAD</tag>
     </scm>
+
+    <developers>
+        <developer>
+            <name>James R. Perkins</name>
+            <email>jperkins@redhat.com</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>https://redhat.com</organizationUrl>
+        </developer>
+    </developers>
 
     <licenses>
         <license>
@@ -36,7 +46,19 @@
 
     <properties>
         <version.release.plugin>3.0.0-M6</version.release.plugin>
+        <version.nexus-staging-maven-plugin>1.6.13</version.nexus-staging-maven-plugin>
     </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-release</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <modules>
         <module>resteasy-checkstyle-config</module>
@@ -57,4 +79,40 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${version.nexus-staging-maven-plugin}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <serverId>ossrh</serverId>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                            <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+                            <stagingProgressTimeoutMinutes>60</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
