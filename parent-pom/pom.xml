@@ -42,6 +42,7 @@
     <properties>
         <!-- Configuration properties -->
         <skipFormatting>false</skipFormatting>
+        <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
 
         <!-- Default to Java 11 -->
         <jdk.min.version>11</jdk.min.version>
@@ -49,9 +50,10 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
 
-        <version.nexus-staging-maven-plugin>1.6.13</version.nexus-staging-maven-plugin>
-        <version.formatter-maven-plugin>2.17.0</version.formatter-maven-plugin>
-        <version.impsort-maven-plugin>1.6.2</version.impsort-maven-plugin>
+        <version.surefire.plugin>3.0.0-M7</version.surefire.plugin>
+        <version.nexus.staging.maven.plugin>1.6.13</version.nexus.staging.maven.plugin>
+        <version.formatter.maven.plugin>2.17.0</version.formatter.maven.plugin>
+        <version.impsort.maven.plugin>1.6.2</version.impsort.maven.plugin>
     </properties>
 
     <build>
@@ -84,9 +86,16 @@
                     </dependencies>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <redirectTestOutputToFile>${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
                     <artifactId>formatter-maven-plugin</artifactId>
-                    <version>${version.formatter-maven-plugin}</version>
+                    <version>${version.formatter.maven.plugin}</version>
                     <dependencies>
                         <dependency>
                             <groupId>dev.resteasy.tools</groupId>
@@ -115,7 +124,7 @@
                 <plugin>
                     <groupId>net.revelc.code</groupId>
                     <artifactId>impsort-maven-plugin</artifactId>
-                    <version>${version.impsort-maven-plugin}</version>
+                    <version>${version.impsort.maven.plugin}</version>
                     <configuration>
                         <!-- store outside of target to speed up formatting when mvn clean is used -->
                         <cachedir>.cache</cachedir>
@@ -146,7 +155,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${version.nexus-staging-maven-plugin}</version>
+                        <version>${version.nexus.staging.maven.plugin}</version>
                         <extensions>true</extensions>
                         <configuration>
                             <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
