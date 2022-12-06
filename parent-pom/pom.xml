@@ -107,6 +107,7 @@
                         <!-- store outside of target to speed up formatting when mvn clean is used -->
                         <cachedir>.cache</cachedir>
                         <configFile>eclipse-code-formatter.xml</configFile>
+                        <configXmlFile>resteasy-xml.properties</configXmlFile>
                         <lineEnding>LF</lineEnding>
                         <removeTrailingWhitespace>true</removeTrailingWhitespace>
                         <skip>${skipFormatting}</skip>
