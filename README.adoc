@@ -1,0 +1,20 @@
+= RESTEasy Development Tools
+
+This project simply contains a parent POM, which is an extension of the `org.jboss:jboss-parent`, a checkstyle
+configuration file and some IDE configuration files.
+
+== Releasing
+
+This project is released directly to Maven Central. See the https://central.sonatype.org/publish/publish-guide/[Sonatype]
+documentation on how to set up your local environment.
+
+[source,bash]
+----
+RELEASE_VERSION="<your-version>"
+mvn release:prepare -DreleaseVersion="${RELEASE_VERSION}"
+git checkout ${RELEASE_VERSION}
+mvn clean deploy -Prelease -Pmaven-central-release
+----
+
+This should be released to https://s01.oss.sonatype.org/#stagingRepositories. Follow the Nexus release process to
+complete the release.
