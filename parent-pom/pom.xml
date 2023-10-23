@@ -50,7 +50,6 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
 
-        <version.surefire.plugin>3.0.0-M7</version.surefire.plugin>
         <version.nexus.staging.maven.plugin>1.6.13</version.nexus.staging.maven.plugin>
         <version.formatter.maven.plugin>2.23.0</version.formatter.maven.plugin>
         <version.impsort.maven.plugin>1.9.0</version.impsort.maven.plugin>
@@ -151,7 +150,12 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>maven-central-release</id>
+            <activation>
+                <property>
+                    <name>maven.central.release</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
