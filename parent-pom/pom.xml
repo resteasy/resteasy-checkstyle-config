@@ -150,7 +150,12 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>maven-central-release</id>
+            <activation>
+                <property>
+                    <name>maven.central.release</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
