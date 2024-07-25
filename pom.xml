@@ -44,6 +44,12 @@
 
     <properties>
         <version.nexus.staging.maven.plugin>1.7.0</version.nexus.staging.maven.plugin>
+
+        <!-- Currently, this project doesn't compile anything. However, for consistency require a minimum of 17 to
+             build with a release version of 11.
+         -->
+        <jdk.min.version>17</jdk.min.version>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <distributionManagement>
