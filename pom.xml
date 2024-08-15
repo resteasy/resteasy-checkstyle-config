@@ -13,7 +13,7 @@
     <groupId>dev.resteasy.tools</groupId>
     <artifactId>resteasy-dev-tools</artifactId>
     <name>RESTEasy: Development Tools</name>
-    <version>3-SNAPSHOT</version>
+    <version>3</version>
     <packaging>pom</packaging>
 
     <url>https://resteasy.dev</url>
