@@ -10,7 +10,7 @@
 
     <groupId>dev.resteasy.tools</groupId>
     <artifactId>resteasy-parent</artifactId>
-    <version>3</version>
+    <version>4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>https://resteasy.dev</url>
@@ -78,7 +78,7 @@
                         <dependency>
                             <groupId>dev.resteasy.tools</groupId>
                             <artifactId>resteasy-checkstyle-config</artifactId>
-                            <version>3</version>
+                            <version>4-SNAPSHOT</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -97,7 +97,7 @@
                         <dependency>
                             <groupId>dev.resteasy.tools</groupId>
                             <artifactId>ide-config</artifactId>
-                            <version>3</version>
+                            <version>4-SNAPSHOT</version>
                         </dependency>
                     </dependencies>
                     <configuration>
